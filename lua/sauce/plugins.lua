@@ -124,6 +124,9 @@ return packer.startup(function(use)
   -- solidity
   use "tomlion/vim-solidity"
 
+  -- bracey
+  use "turbio/bracey.vim"
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then

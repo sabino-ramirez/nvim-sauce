@@ -43,7 +43,7 @@ nvim_tree.setup {
     "alpha",
   },
   -- auto_close = true,
-  open_on_tab = false,
+  open_on_tab = true,
   hijack_cursor = true,
   update_cwd = true,
   update_to_buf_dir = {
@@ -78,7 +78,7 @@ nvim_tree.setup {
     timeout = 500,
   },
   view = {
-    width = 30,
+    width = 24,
     height = 30,
     hide_root_folder = false,
     side = "left",
@@ -107,6 +107,6 @@ nvim_tree.setup {
     folders = 1,
     files = 1,
     folder_arrows = 1,
-    tree_width = 30,
+    tree_width = 24,
   },
 }

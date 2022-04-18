@@ -89,6 +89,11 @@ _G.packer_plugins = {
     path = "/home/sabino/.local/share/nvim/site/pack/packer/start/alpha-nvim",
     url = "https://github.com/goolord/alpha-nvim"
   },
+  ["bracey.vim"] = {
+    loaded = true,
+    path = "/home/sabino/.local/share/nvim/site/pack/packer/start/bracey.vim",
+    url = "https://github.com/turbio/bracey.vim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
     path = "/home/sabino/.local/share/nvim/site/pack/packer/start/cmp-buffer",
