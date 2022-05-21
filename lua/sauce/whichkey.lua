@@ -2,7 +2,7 @@ local status_ok, which_key = pcall(require, "which-key")
 if not status_ok then
   return
 end
--- Hello world!
+
 local setup = {
   plugins = {
     marks = true, -- shows a list of your marks on ' and `
@@ -88,6 +88,7 @@ local mappings = {
   ["t"] = { "<cmd>TroubleToggle<cr>", "Trouble" },
   ["w"] = { "<cmd>w!<CR>", "Save" },
   ["q"] = { "<cmd>q!<CR>", "Quit" },
+  ["Q"] = { "<cmd>wq!<CR>", "Save and Quit" },
   ["z"] = { "<cmd>ZenMode<CR>", "ZenMode" },
   ["c"] = { "<cmd>Bdelete!<CR>", "Close Buffer" },
   ["h"] = { "<cmd>nohlsearch<CR>", "No Highlight" },
@@ -95,7 +96,7 @@ local mappings = {
     "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes').get_dropdown{previewer = false})<cr>",
     "Find files",
   },
-  ["F"] = { "<cmd>Telescope liv_grep theme=ivy<cr>", "Find Text" },
+  ["F"] = { "<cmd>Telescope live_grep theme=ivy<cr>", "Find Text" },
   ["P"] = { "<cmd>lua require('telescope').extensions.projects.projects()<cr>", "Projects" },
 
   p = {

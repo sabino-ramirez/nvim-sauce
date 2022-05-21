@@ -10,6 +10,8 @@ end
 
 require("luasnip/loaders/from_vscode").lazy_load()
 
+vim.g.completeopt="menu, menuone, noselect, noinsert"
+
 local check_backspace = function()
   local col = vim.fn.col "." - 1
   return col == 0 or vim.fn.getline("."):sub(col, col):match "%s"
@@ -48,7 +50,7 @@ local kind_icons = {
 cmp.setup {
   snippet = {
     expand = function(args)
-      luasnip.lsp_expand(args.body) -- For `luasnip` users.
+      luasnip.lsp_expand(args.body)
     end,
   },
   mapping = {
@@ -64,7 +66,7 @@ cmp.setup {
     },
     -- Accept currently selected item. If none selected, `select` first item.
     -- Set `select` to `false` to only confirm explicitly selected items.
-    ["<CR>"] = cmp.mapping.confirm { select = true },
+    ["<CR>"] = cmp.mapping.confirm { select = false },
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -103,18 +105,16 @@ cmp.setup {
       vim_item.menu = ({
         nvim_lsp = "[lsp]",
         nvim_lua = "[nvim_lua]",
-        cmp_tabnine = "[tabnine]",
+        path = "[path]",
         luasnip = "[snippet]",
         buffer = "[buffer]",
-        path = "[path]",
       })[entry.source.name]
       return vim_item
     end,
   },
   sources = {
-    { name = "nvim_lua" },
     { name = "nvim_lsp" },
-    { name = "cmp_tabnine" },
+    { name = "nvim_lua" },
     { name = "luasnip" },
     { name = "path" },
     { name = "buffer" },
@@ -123,11 +123,20 @@ cmp.setup {
     behavior = cmp.ConfirmBehavior.Replace,
     select = false,
   },
-  documentation = {
-    border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+  window = {
+    documentation = {
+      border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
+    }
   },
   experimental = {
-    ghost_text = false,
-    native_menu = false,
+    ghost_text = true,
+    view = {
+      native_menu = true,
+    }
   },
 }
+
+local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+--require('lspconfig').html.setup {
+--  capabilities = capabilities 
+--}

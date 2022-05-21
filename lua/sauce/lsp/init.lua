@@ -6,4 +6,3 @@ end
 require "sauce.lsp.lsp-installer"
 require"sauce.lsp.handlers".setup()
 require "sauce.lsp.null-ls"
-

@@ -1,5 +1,4 @@
-local status_ok, telescope = pcall(require, "telescope")
-if not status_ok then
+local status_ok, telescope = pcall(require, "telescope") if not status_ok then
   return
 end
 
@@ -7,10 +6,31 @@ local actions = require "telescope.actions"
 
 telescope.setup {
   defaults = {
-
+    -- Default configuration for telescope goes here:
+    -- config_key = value,
     prompt_prefix = " ",
     selection_caret = " ",
+    entry_prefix = "  ",
     path_display = { "smart" },
+    initial_mode = 'insert',
+    color_devicons = true,
+    use_less = true,
+
+    selection_strategy = "reset",
+    sorting_strategy = "descending",
+    --layout_strategy = "horizontal",
+    --file_sorter = require'telescope.sorters'.get_fuzzy_file,
+    file_ignore_patterns = {},
+    --generic_sorter = require'telescope.sorters'.get_generic_fuzzy_sorter,
+    path_display = {},
+    winblend = 0,
+    border = {},
+    borderchars = {'─', '│', '─', '│', '╭', '╮', '╯', '╰'},
+    set_env = {['COLORTERM'] = 'truecolor'}, -- default = nil,
+    --file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
+    --grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
+    --qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
+    --buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker,
 
     mappings = {
       i = {
@@ -92,5 +112,5 @@ telescope.setup {
     --   extension_config_key = value,
     -- }
     -- please take a look at the readme of the extension you want to configure
-  },
+  }
 }

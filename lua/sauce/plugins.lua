@@ -42,41 +42,32 @@ packer.init {
 return packer.startup(function(use)
   --package manager manages itself
   use "wbthomason/packer.nvim"
-  use "nvim-lua/popup.nvim" -- An implementation of the Popup API from vim in Neovim
-  use "nvim-lua/plenary.nvim" -- Useful lua functions used ny lots of plugins
-  use "lewis6991/impatient.nvim" --start nvim faster
-  use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
 
-  --for commenting/autopairs/navigation
+  -- theme
+  use 'shaunsingh/nord.nvim'
+  use 'LunarVim/Colorschemes'
+
+  -- alpha starting page
+  use 'goolord/alpha-nvim'
+
+  -- lsp baby
+  use "neovim/nvim-lspconfig" -- enable LSP
+  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
+  use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
+  use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
+  use "jose-elias-alvarez/nvim-lsp-ts-utils" -- vs code-like commands for imports
+  use "folke/trouble.nvim"
+
+  -- syntax highlighting
+  use {'nvim-treesitter/nvim-treesitter', run = ':TSUpdate'}
+
+  -- treesitter plugins for commenting and autopairs
   use "numToStr/Comment.nvim"
   use "JoosepAlviste/nvim-ts-context-commentstring"
   use "windwp/nvim-autopairs"
   use "windwp/nvim-ts-autotag"
-  -- use "lukas-reineke/indent-blankline.nvim" --indentation
-
-  -- wrap string in quotes, tags, brackets etc
-  use "tpope/vim-surround"
-  use "tpope/vim-repeat" --for using dot (.) with surround ^
-
-  --file explorer
-  use "kyazdani42/nvim-web-devicons"
-  use "kyazdani42/nvim-tree.lua"
-  use "moll/vim-bbye"
-
-  --statusline/bufferline
-  use "nvim-lualine/lualine.nvim"
-  use "goolord/alpha-nvim" --starting page
-
-  --terminal
-  use "akinsho/toggleterm.nvim"
-  -- use "ahmedkhalf/project.nvim"
-
-  --which key for keybinds
-  use "folke/which-key.nvim"
-
-  -- Colorschemes
-   use "lunarvim/colorschemes" -- A bunch of colorschemes you can try out
-   use "lunarvim/darkplus.nvim"
+  use "p00f/nvim-ts-rainbow"
+  use 'lewis6991/impatient.nvim'
 
   -- cmp plugins
   use "hrsh7th/nvim-cmp" -- The completion plugin
@@ -86,46 +77,38 @@ return packer.startup(function(use)
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-nvim-lua"
-  use {"tzachar/cmp-tabnine", run='./install.sh'}
+  -- use {"tzachar/cmp-tabnine", run='./install.sh'}
+
+  -- telescope
+  use {
+    'nvim-telescope/telescope.nvim',
+    requires = { {'nvim-lua/plenary.nvim'} }
+  }
 
   -- snippets
   use "L3MON4D3/LuaSnip" --snippet engine
-  use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
-  -- LSP
-  use "neovim/nvim-lspconfig" -- enable LSP
-  use "williamboman/nvim-lsp-installer" -- simple to use language server installer
-  use "tamago324/nlsp-settings.nvim" -- language server settings defined in json for
-  use "jose-elias-alvarez/null-ls.nvim" -- for formatters and linters
-  use "jose-elias-alvarez/nvim-lsp-ts-utils" -- vs code-like commands for imports
-  use "folke/trouble.nvim"
-
-  -- Telescope
-  use "nvim-telescope/telescope.nvim"
-
-  -- Treesitter
+  --file explorer
   use {
-    "nvim-treesitter/nvim-treesitter",
-    run = ":TSUpdate",
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons', -- optional, for file icon
+    },
+    tag = 'nightly' -- optional, updated every week. (see issue #1193)
+  }
+  use "moll/vim-bbye"
+
+  -- lualine for status line
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'kyazdani42/nvim-web-devicons', opt = true }
   }
 
-  -- Rainbow pairs
-  use "p00f/nvim-ts-rainbow"
+  -- bufferline for buffers on top
+  use {'akinsho/bufferline.nvim', tag = "v2.*", requires = 'kyazdani42/nvim-web-devicons'}
 
-  -- Git signs
-  use "lewis6991/gitsigns.nvim"
-
-  -- Java
-  use "mfussenegger/nvim-jdtls"
-
-  -- zen mode
-  use "folke/zen-mode.nvim"
-
-  -- solidity
-  use "tomlion/vim-solidity"
-
-  -- bracey
-  use "turbio/bracey.vim"
+  -- for keybind organization
+  use "folke/which-key.nvim"
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

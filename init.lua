@@ -1,19 +1,16 @@
-require "sauce.general"
-require "sauce.keybinds"
-require "sauce.plugins"
-require "sauce.colorscheme"
-require "sauce.cmp"
-require "sauce.treesitter"
-require "sauce.lsp"
-require "sauce.nvim-tree"
-require "sauce.whichkey"
-require "sauce.impatient"
-require "sauce.gitsigns"
-require "sauce.alpha"
-require "sauce.telescope"
-require "sauce.toggleterm"
-require "sauce.autopairs"
-require "sauce.zen-mode"
--- require "sauce.indent-blankline"
-require "sauce.lualine"
-require "sauce.comment"
+require('sauce.general')
+require('sauce.keybinds')
+require('sauce.plugins')
+require('sauce.lsp')
+require('sauce.treesitter')
+require('sauce.nvim-autopairs')
+require('sauce.comment')
+require('sauce.nvim-cmp')
+require('sauce.telescope')
+require('sauce.nvim-tree')
+require('sauce.lualine')
+require('sauce.bufferline')
+require('sauce.whichkey')
+require('sauce.alpha')
+require('sauce.impatient')
+vim.cmd('colorscheme onedarker')
